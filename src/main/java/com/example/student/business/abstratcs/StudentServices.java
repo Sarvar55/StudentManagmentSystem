@@ -1,12 +1,11 @@
-package com.example.employeemanagment.business.abstratcs;
+package com.example.student.business.abstratcs;
 
-import com.example.employeemanagment.entity.Student;
-import org.springframework.stereotype.Service;
+import com.example.student.entity.Student;
 
 import java.util.List;
 import java.util.Optional;
 
-@Service
+
 public interface StudentServices {
     Optional<Student> getByStudentId(Integer student_id);
 

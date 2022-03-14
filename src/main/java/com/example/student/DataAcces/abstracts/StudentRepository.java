@@ -1,7 +1,6 @@
-package com.example.employeemanagment.DataAcces.abstracts;
+package com.example.student.DataAcces.abstracts;
 
-import com.example.employeemanagment.entity.Student;
-import org.springframework.data.domain.Sort;
+import com.example.student.entity.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

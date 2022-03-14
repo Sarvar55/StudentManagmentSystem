@@ -1,8 +1,7 @@
-package com.example.employeemanagment.entity;
+package com.example.student.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;

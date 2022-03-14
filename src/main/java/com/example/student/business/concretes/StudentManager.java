@@ -1,13 +1,14 @@
-package com.example.employeemanagment.business.concretes;
+package com.example.student.business.concretes;
 
-import com.example.employeemanagment.DataAcces.abstracts.StudentRepository;
-import com.example.employeemanagment.business.abstratcs.StudentServices;
-import com.example.employeemanagment.entity.Student;
+import com.example.student.DataAcces.abstracts.StudentRepository;
+import com.example.student.business.abstratcs.StudentServices;
+import com.example.student.entity.Student;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+@Service
 public class StudentManager implements StudentServices {
 
     private StudentRepository repository;
@@ -46,6 +47,7 @@ public class StudentManager implements StudentServices {
     public List<Student> getByStudentNameContains(String student_name) {
         return repository.getByStudentNameContains(student_name);
     }
+
     @Override
     public Optional<List<Student>> getByStudentName(String student_name) {
         return Optional.ofNullable(repository.getByStudentName(student_name));
