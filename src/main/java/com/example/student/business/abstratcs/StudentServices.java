@@ -1,6 +1,5 @@
 package com.example.employeemanagment.business.abstratcs;
 
-import com.example.employeemanagment.DataAcces.abstracts.StudentRepository;
 import com.example.employeemanagment.entity.Student;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +21,5 @@ public interface StudentServices {
     List<Student> getByStudentNameContains(String student_name);
 
     Optional<List<Student>> getByStudentName(String student_name);
-
 
 }

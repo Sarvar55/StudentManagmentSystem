@@ -1,8 +1,8 @@
-package com.example.employeemanagment.controller.api;
+package com.example.student.controller.api;
 
-import com.example.employeemanagment.business.abstratcs.StudentServices;
-import com.example.employeemanagment.entity.Student;
-import com.example.employeemanagment.exception.StudentNotFoundException;
+import com.example.student.business.abstratcs.StudentServices;
+import com.example.student.entity.Student;
+import com.example.student.exception.StudentNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,13 +10,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3004")
 @RestController
 @RequestMapping("/api/v1/home")
 public class StudentController {
 
     private StudentServices services;
-
     @Autowired
     public StudentController(StudentServices services) {
         this.services = services;
@@ -27,12 +26,12 @@ public class StudentController {
         return services.findAll();
     }
 
-    @PostMapping("/students")
+    @PostMapping("/students/add")
     public Student createStudent(@RequestBody Student student) {
         return services.createStudent(student);
     }
 
-    @GetMapping("/students/{studentId}")
+    @PutMapping("/students/update/{studentId}")
     public ResponseEntity<Student> updateStudent(@PathVariable int studentId, @RequestBody Student studentDetails) throws StudentNotFoundException {
         Student student = services.getByStudentId(studentId).
                 orElseThrow(() -> new StudentNotFoundException("Students not exist with id : " + studentId));
@@ -46,7 +45,7 @@ public class StudentController {
         return ResponseEntity.ok(updateStudent);
     }
 
-    @GetMapping("/students/{studentId}")
+    @GetMapping("/students/findId/{studentId}")
     public ResponseEntity<Student> getStudentById(@PathVariable int studentId) throws StudentNotFoundException {
         Student student = services.getByStudentId(studentId).
                 orElseThrow(() -> new StudentNotFoundException("Students not exist with studentId : " + studentId));
@@ -54,7 +53,7 @@ public class StudentController {
         return ResponseEntity.ok(student);
     }
 
-    @DeleteMapping("/students/{studentId}")
+    @DeleteMapping("/students/delete/{studentId}")
     public ResponseEntity<Map<String, Boolean>> deleteStudent(@PathVariable int studentId) throws StudentNotFoundException {
         Student student = services.getByStudentId(studentId).
                 orElseThrow(() -> new StudentNotFoundException("Students not exist with studentId : " + studentId));
@@ -65,7 +64,7 @@ public class StudentController {
         return ResponseEntity.ok(response);
     }
 
-    @GetMapping("/students/{studentName}")
+        @GetMapping("/students/findName/{studentName}")
     public ResponseEntity<List<Student>> getByStudentName(@PathVariable String studentName) throws StudentNotFoundException {
 
         List<Student> student=services.getByStudentName(studentName).
